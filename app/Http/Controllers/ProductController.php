@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ProductController extends Controller
         return view('admin.product.index')->with('product',$product);
     }
     public function create(){
-        return view('admin.product.create');
+        $category = Category::all();
+        return view('admin.product.create',compact('category'));
     }
 
     public function save(){
@@ -22,13 +24,9 @@ class ProductController extends Controller
         }
     }
     public function show($productId){
-
-        // Use lowercase 'product' instead of 'product::find'
         $product = Product::find($productId);
-        // dd($product);
-                if($product){
-            return view('admin.product.edit')->with('product',$product);
-        }
+        $category = Category::all();
+            return view('admin.product.edit',compact('product','category'));
     }
 
     public function update(Request $request){

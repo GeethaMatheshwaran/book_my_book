@@ -14,17 +14,16 @@
                 <!-- Left Side Menu -->
                 <ul class="list-group">
                     <li class="list-group-item">
-                        {{-- <a href="{{ route('admin.category.index') }}">Category</a> --}}
-                        <a href="#">Product</a>
-
+                        <a href="{{ route('admin.category.index') }}">Category</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">Product</a>
+                        <a href="{{ route('admin.product.index') }}">Product</a>
                     </li>
                 </ul>
             </div>
+
             <div class="col-md-9">
-                <h1>BOOK MY BOOK</h1>
+                <h1 align="center" class="my-3">BOOK MY BOOK</h1>
                 <div class="container">
                     @yield('content')
                 </div>
