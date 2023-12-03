@@ -14,6 +14,9 @@
                 <!-- Left Side Menu -->
                 <ul class="list-group">
                     <li class="list-group-item">
+                        <a href="{{ route('admin.user.index') }}">User</a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="{{ route('admin.category.index') }}">Category</a>
                     </li>
                     <li class="list-group-item">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,3 +55,6 @@ Route::post('categoryUpdate', [CategoryController::class,'update'])->name('admin
 
 //CATEGORY DELETE
 Route::delete('categoryDelete/{id}', [CategoryController::class,'delete'])->name('admin.category.delete');
+
+//USER INDEX
+Route::get('userIndex',[UserController::class,'index'])->name('admin.user.index');
