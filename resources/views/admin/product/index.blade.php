@@ -1,13 +1,13 @@
 @extends('admin.layout')
 @section('title')
-    Product
+    Book
 @endsection
 @section('content')
     <div class="container">
         <div class="row my-5">
             <div class="col-md-14">
                 <div class="card">
-                    <div class="card-header">Product</div>
+                    <div class="card-header">Book</div>
                     <div class="card-body">
                         <a href="{{ route('admin.product.create') }}" class="btn btn-success btn-sm" title="Add New product">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
@@ -21,6 +21,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Category</th>
+                                        <th>Price</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -31,16 +32,23 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->category_id }}</td>
+                                            <td>
+                                                @foreach ($category as $cat)
+                                                    @if ($item->category_id == $cat->id)
+                                                        {{ $cat->name }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>{{ $item->price }}</td>
+
                                             <td>{{ $item->description }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            {{-- <td>
+                                            <td>
                                                 @if ($item->status == 1)
-                                                    <span class="dot" style="background-color: green;">&#9679;</span> <!-- Display a green dot -->
+                                                    <span class="dot green">&#9679;</span>
                                                 @else
-                                                    <span class="dot" style="background-color: red;">&#9679;</span> <!-- Display a red dot -->
+                                                    <span class="dot red">&#9679;</span>
                                                 @endif
-                                            </td> --}}
+                                            </td>
                                             <td>
                                                 <a href="{{ route('admin.product.edit', ['id' => $item->id]) }}"
                                                     title="Edit Student"><button class="btn btn-primary btn-sm"><i

@@ -21,25 +21,25 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //PRODUCT INDEX
-Route::get('productIndex', [ProductController::class,'index'])->name('admin.product.index');
+Route::get('Book', [ProductController::class,'index'])->name('admin.product.index');
 
 //PRODUCT CREATE
-Route::get('productCreate', [ProductController::class,'create'])->name('admin.product.create');
+Route::get('BookCreate', [ProductController::class,'create'])->name('admin.product.create');
 
 //PRODUCT STORE
-Route::post('productSave', [ProductController::class,'save'])->name('admin.product.save');
+Route::post('BookSave', [ProductController::class,'save'])->name('admin.product.save');
 
 //PRODUCT EDIT
-Route::get('productEdit/{id}', [ProductController::class,'show'])->name('admin.product.edit');
+Route::get('BookEdit/{id}', [ProductController::class,'show'])->name('admin.product.edit');
 
 //PRODUCT UPDATE
-Route::post('productUpdate', [ProductController::class,'update'])->name('admin.product.update');
+Route::post('BookUpdate', [ProductController::class,'update'])->name('admin.product.update');
 
 //PRODUCT DELETE
-Route::delete('productDelete/{id}', [ProductController::class,'delete'])->name('admin.product.delete');
+Route::delete('BookDelete/{id}', [ProductController::class,'delete'])->name('admin.product.delete');
 
 //CATEGORY INDEX
-Route::get('categoryIndex', [CategoryController::class,'index'])->name('admin.category.index');
+Route::get('category', [CategoryController::class,'index'])->name('admin.category.index');
 
 //CATEGORY CREATE
 Route::get('categoryCreate', [CategoryController::class,'create'])->name('admin.category.create');
@@ -57,4 +57,4 @@ Route::post('categoryUpdate', [CategoryController::class,'update'])->name('admin
 Route::delete('categoryDelete/{id}', [CategoryController::class,'delete'])->name('admin.category.delete');
 
 //USER INDEX
-Route::get('userIndex',[UserController::class,'index'])->name('admin.user.index');
+Route::get('User',[UserController::class,'index'])->name('admin.user.index');
