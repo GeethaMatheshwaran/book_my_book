@@ -53,9 +53,9 @@
             <div class="col-md-9">
                 <h1 align="center" class="my-3">BOOK MY BOOK</h1>
                 <div class="container">
-                    @if(Auth::check())
-    <p>Welcome, {{ Auth::user()->name }}</p>
-@endif
+                    @if (Auth::check())
+                        <p>Welcome, {{ Auth::user()->name }}</p>
+                    @endif
                     @yield('content')
                     {{-- @section('content') --}}
 

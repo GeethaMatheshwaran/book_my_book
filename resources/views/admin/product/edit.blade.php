@@ -28,9 +28,9 @@
                 <label>Description</label></br>
                 <input type="text" name="description" id="description" class="form-control"
                     value="{{ $product->description }}" required></br>
-                <label>Status</label></br>
-                <input type="text" name="status" id="status" class="form-control"
-                    value="{{ $product->status }}" required></br>
+                {{-- <label>Status</label></br> --}}
+                {{-- <input type="text" name="status" id="status" class="form-control"
+                    value="{{ $product->status }}" required></br> --}}
                 <input type="submit" value="Update" class="btn btn-success"></br>
             </form>
 

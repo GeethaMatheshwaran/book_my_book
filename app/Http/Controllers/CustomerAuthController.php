@@ -18,7 +18,7 @@ class CustomerAuthController extends Controller
         if($user) {
             if(($user->password === $request->password) && $user->role == 0) {
                 Auth::login($user); // Log the user in
-                return redirect()->intended('Books');
+                return redirect()->intended('/');
             } else {
                 return redirect()->route('customer.login')->withErrors(['error' => 'Invalid credentials']);
             }

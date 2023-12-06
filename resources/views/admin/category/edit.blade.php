@@ -15,8 +15,8 @@ Category
         <input type="text" name="name" id="name" class="form-control" value="{{$category->name}}" required></br>
         <label>Description</label></br>
         <input type="text" name="description" id="description" class="form-control" value="{{$category->description}}" required></br>
-        <label>Status</label></br>
-        <input type="text" name="status" id="status" class="form-control" value="{{$category->status}}" required></br>
+        {{-- <label>Status</label></br> --}}
+        {{-- <input type="text" name="status" id="status" class="form-control" value="{{$category->status}}" required></br> --}}
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
 

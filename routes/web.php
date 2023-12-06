@@ -4,32 +4,13 @@ use App\Http\Controllers\AdminauthController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerCartController;
 use App\Http\Controllers\CustomerProductController;
-use App\Http\Middleware\CheckAdminMiddleware;
-use App\Http\Middleware\CheckCustomerMiddleware;
 use Illuminate\Support\Facades\Route;
 
-
-///
-// Admin routes
-Route::middleware(['auth', 'checkAdmin'])->group(function () {
-    // Admin-specific routes here
-    Route::get('/', [CheckAdminMiddleware::class, 'dashboard'])->name('admin.dashboard');
-    // Other admin routes...
-});
-
-// Customer routes
-Route::middleware(['auth', 'checkCustomer'])->group(function () {
-    // Customer-specific routes here
-    Route::get('/customer/dashboard', [CheckCustomerMiddleware::class, 'dashboard'])->name('customer.dashboard');
-    // Other customer routes...
-});
-
-
-///
-Route::get('/',function(){
-    return view('admin.layout');
-});
+// Route::get('/admin',function(){
+//     return view('admin.layout');
+// });
 //CATEGORY INDEX
 Route::get('categoryIndex', [AdminCategoryController::class,'index'])->name('admin.category.index');
 
@@ -50,6 +31,8 @@ Route::delete('categoryDelete/{id}', [AdminCategoryController::class,'delete'])-
 
 //PRODUCT INDEX
 Route::get('bookIndex', [AdminProductController::class,'index'])->name('admin.product.index');
+
+Route::get('BookIndex', [AdminProductController::class,'index'])->name('admin.product.index');
 
 //PRODUCT CREATE
 Route::get('bookCreate', [AdminProductController::class,'create'])->name('admin.product.create');
@@ -89,4 +72,14 @@ Route::get('CustomerLoginForm',[CustomerAuthController::class,'showForm'])->name
 Route::post('/login', [CustomerAuthController::class, 'login'])->name('customer.validation');
 
 //CUSTOMER - SHOW THR PRODUCTS
-Route::get('/Books', [CustomerProductController::class, 'index'])->name('customer.index');
+Route::get('/', [CustomerProductController::class, 'index'])->name('customer.product.list');
+
+// ADD TO CART
+Route::post('/addToCart/{bookId}', [CustomerCartController::class, 'addToCart'])->name('addToCart');
+
+//CHECKOUT
+Route::get('/checkout', [CustomerCartController::class, 'checkout'])->name('checkout');
+
+//PLACE ORDER
+Route::post('/placeOrder', [CustomerCartController::class, 'placeOrder'])->name('placeOrder');
+

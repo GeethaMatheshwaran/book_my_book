@@ -21,7 +21,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Status</th>
+                                        {{-- <th>Status</th> --}}
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -31,14 +31,13 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->description }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 @if ($item->status == 1)
                                                     <span class="dot green">&#9679;</span>
                                                 @else
                                                     <span class="dot red">&#9679;</span>
                                                 @endif
-                                            </td>
-
+                                            </td> --}}
                                             <td>
                                                 <a href="{{ route('admin.category.edit', ['id' => $item->id]) }}"
                                                     title="Edit Student"><button class="btn btn-primary btn-sm"><i
