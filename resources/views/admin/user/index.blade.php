@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('title')
-User
+    User
 @endsection
 @section('content')
     <div class="container">
@@ -9,9 +9,8 @@ User
                 <div class="card">
                     <div class="card-header">User</div>
                     <div class="card-body">
-
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -26,23 +25,23 @@ User
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($user as $userData)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $userData->name }}</td>
-                                        <td>{{ $userData->email }}</td>
-                                        <td>{{ $userData->age }}</td>
-                                        <td>{{ $userData->phone_no }}</td>
-                                        <td>
-                                        @if ($userData->role == 1)
-                                            {{'Admin'}}
-                                        @else
-                                            {{'Customer'}}
-                                        @endif
-                                        </td>
-                                        <td>{{ $userData->password }}</td>
-                                    </tr>
-                                @endforeach
+                                    @foreach ($user as $userData)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $userData->name }}</td>
+                                            <td>{{ $userData->email }}</td>
+                                            <td>{{ $userData->age }}</td>
+                                            <td>{{ $userData->phone_no }}</td>
+                                            <td>
+                                                @if ($userData->role == 1)
+                                                    {{ 'Admin' }}
+                                                @else
+                                                    {{ 'Customer' }}
+                                                @endif
+                                            </td>
+                                            <td>{{ $userData->password }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

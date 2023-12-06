@@ -2,7 +2,7 @@
 @section('title')
     Book
 @endsection
-@section('content')
+
     <div class="container">
         <div class="row my-5">
             <div class="col-md-14">

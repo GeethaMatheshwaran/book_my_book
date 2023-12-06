@@ -44,11 +44,21 @@
                     </li>
                 </ul>
             </div>
+            {{-- <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">Logout</button>
+            </form> --}}
+
 
             <div class="col-md-9">
                 <h1 align="center" class="my-3">BOOK MY BOOK</h1>
                 <div class="container">
+                    @if(Auth::check())
+    <p>Welcome, {{ Auth::user()->name }}</p>
+@endif
                     @yield('content')
+                    {{-- @section('content') --}}
+
                 </div>
             </div>
         </div>
