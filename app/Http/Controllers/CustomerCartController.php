@@ -18,8 +18,10 @@ class CustomerCartController extends Controller {
 
             // Check if the item already exists in the cart
             $existingCartItem = Cart::where('user_id', $userId)
-                ->where('book_id', $bookId)
-                ->first();
+            ->whereNull('status') // Check for null status
+            ->where('book_id', $bookId)
+            ->first();
+
 
             if($existingCartItem) {
                 // If the item exists, update the quantity
@@ -70,7 +72,8 @@ class CustomerCartController extends Controller {
 
         //
         // Get the cart item IDs from the form submission
-        $cartItemIds = $request->cartItemIds;
+        $cartItemIds = $request->input('cartItemIds');
+
         // dd($cartItemIds);
         // Update the status to 'completed' for cart items with the retrieved IDs
         Cart::whereIn('id', $cartItemIds)->update(['status' => 'completed']);
