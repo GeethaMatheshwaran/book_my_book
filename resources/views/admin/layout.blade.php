@@ -48,6 +48,8 @@
                 @csrf
                 <button type="submit">Logout</button>
             </form> --}}
+            <a href="{{ route('logout') }}">Logout</a>
+
 
 
             <div class="col-md-9">

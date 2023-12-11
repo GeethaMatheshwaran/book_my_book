@@ -63,59 +63,13 @@
             </div>
         </form>
     </div>
-    {{-- <div class="container mt-5">
-        <h1 align="center">My Checkout</h1><br><br>
+    <form method="POST" action="{{ route('place.order') }}">
+        @csrf
+        <!-- Other form fields -->
 
-        <a href="{{ route('customer.product.list') }}" class="corner-link" target="_blank">View Books</a>
+        <button type="submit">Mail Place Order</button>
+    </form>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th class="text-end">Quantity</th>
-                            <th class="text-end">Price</th>
-                            <th class="text-end">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $overallTotal = 0; // Initialize overall total variable
-                        @endphp
-                                        <form action="{{ route('placeOrder') }}" method="POST">
-
-                        @foreach ($cartItems as $cartItem)
-                            <tr>
-                                    <!-- Hidden input field to store cart item IDs -->
-                                    <input type="text" name="cartItemIds[]" value="{{ $cartItem->id }}">
-                                <td>{{ $cartItem->product->name }}</td>
-                                <td class="text-end">{{ $cartItem->quantity }}</td>
-                                <td class="text-end">Rs. {{ $cartItem->product->price }}</td>
-                                <td class="text-end">Rs. {{ $cartItem->quantity * $cartItem->product->price }}</td>
-                            </tr>
-                            @php
-                                // Calculate individual total for each item
-                                $itemTotal = $cartItem->quantity * $cartItem->product->price;
-                                // Accumulate individual totals to calculate overall total
-                                $overallTotal += $itemTotal;
-                            @endphp
-                        @endforeach
-                        <tr>
-                            <td colspan="3" class="text-end fw-bold">Overall Total:</td>
-                            <td class="text-end fw-bold">Rs. {{ $overallTotal }}</td>
-                        </tr>
-                    </tbody>
-                    @csrf
-                    <input type="hidden" id="hidden_overallTotal" name="hidden_overallTotal" value="{{ $overallTotal }}">
-                    <button type="submit" class="btn btn-primary">Place Order</button>
-                </form>
-                </table>
-
-
-            </div>
-        </div>
-    </div> --}}
 
     <!-- Bootstrap JS (Optional for some features) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

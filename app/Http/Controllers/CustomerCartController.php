@@ -6,6 +6,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\PlaceOrderMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class CustomerCartController extends Controller {
@@ -81,5 +83,14 @@ class CustomerCartController extends Controller {
         return redirect()->route('customer.product.list');
     }
 
+    public function mail_placeOrder(Request $request)
+    {
+        // Logic to place order...
+
+        // Send email
+        Mail::to('msangeethaece210@gmail.com')->send(new PlaceOrderMail());
+
+        // return redirect()->back()->with('success', 'Order placed successfully.');
+    }
 
 }

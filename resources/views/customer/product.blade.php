@@ -29,9 +29,7 @@
     {{-- @if (Auth::check()) --}}
         <div class="container mt-5">
             <h1 align="center">BOOK MY BOOK</h1><br>
-            @if (Auth::check())
              <p>Welcome, {{ Auth::user()->name }}</p>
-             @endif
             <a href="{{ route('checkout') }}" class="corner-link" target="_blank">Checkout</a>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
