@@ -8,49 +8,50 @@ use App\Http\Controllers\CustomerCartController;
 use App\Http\Controllers\CustomerProductController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/admin',function(){
-//     return view('admin.layout');
-// });
-//CATEGORY INDEX
-Route::get('categoryIndex', [AdminCategoryController::class,'index'])->name('admin.category.index');
 
-//CATEGORY CREATE
-Route::get('categoryCreate', [AdminCategoryController::class,'create'])->name('admin.category.create');
+Route::middleware('admin.auth')->group(function () {
+    //CATEGORY INDEX
+    Route::get('categoryIndex', [AdminCategoryController::class, 'index'])->name('admin.category.index');
 
-//CATEGORY STORE
-Route::post('categorySave', [AdminCategoryController::class,'save'])->name('admin.category.save');
+    //CATEGORY CREATE
+    Route::get('categoryCreate', [AdminCategoryController::class, 'create'])->name('admin.category.create');
 
-//CATEGORY EDIT
-Route::get('categoryEdit/{id}', [AdminCategoryController::class,'show'])->name('admin.category.edit');
+    //CATEGORY STORE
+    Route::post('categorySave', [AdminCategoryController::class, 'save'])->name('admin.category.save');
 
-//CATEGORY UPDATE
-Route::post('categoryUpdate', [AdminCategoryController::class,'update'])->name('admin.category.update');
+    //CATEGORY EDIT
+    Route::get('categoryEdit/{id}', [AdminCategoryController::class, 'show'])->name('admin.category.edit');
 
-//CATEGORY DELETE
-Route::delete('categoryDelete/{id}', [AdminCategoryController::class,'delete'])->name('admin.category.delete');
+    //CATEGORY UPDATE
+    Route::post('categoryUpdate', [AdminCategoryController::class, 'update'])->name('admin.category.update');
 
-//PRODUCT INDEX
-Route::get('bookIndex', [AdminProductController::class,'index'])->name('admin.product.index');
+    //CATEGORY DELETE
+    Route::delete('categoryDelete/{id}', [AdminCategoryController::class, 'delete'])->name('admin.category.delete');
 
-Route::get('BookIndex', [AdminProductController::class,'index'])->name('admin.product.index');
+    //PRODUCT INDEX
+    Route::get('bookIndex', [AdminProductController::class, 'index'])->name('admin.product.index');
 
-//PRODUCT CREATE
-Route::get('bookCreate', [AdminProductController::class,'create'])->name('admin.product.create');
+    Route::get('BookIndex', [AdminProductController::class, 'index'])->name('admin.product.index');
 
-//PRODUCT STORE
-Route::post('bookSave', [AdminProductController::class,'save'])->name('admin.product.save');
+    //PRODUCT CREATE
+    Route::get('bookCreate', [AdminProductController::class, 'create'])->name('admin.product.create');
 
-//PRODUCT EDIT
-Route::get('bookEdit/{id}', [AdminProductController::class,'show'])->name('admin.product.edit');
+    //PRODUCT STORE
+    Route::post('bookSave', [AdminProductController::class, 'save'])->name('admin.product.save');
 
-//PRODUCT UPDATE
-Route::post('bookUpdate', [AdminProductController::class,'update'])->name('admin.product.update');
+    //PRODUCT EDIT
+    Route::get('bookEdit/{id}', [AdminProductController::class, 'show'])->name('admin.product.edit');
 
-//PRODUCT DELETE
-Route::delete('bookDelete/{id}', [AdminProductController::class,'delete'])->name('admin.product.delete');
+    //PRODUCT UPDATE
+    Route::post('bookUpdate', [AdminProductController::class, 'update'])->name('admin.product.update');
 
-//USER INDEX
-Route::get('UserIndex',[AdminAuthController::class,'index'])->name('admin.user.index');
+    //PRODUCT DELETE
+    Route::delete('bookDelete/{id}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
+
+    //USER INDEX
+    Route::get('UserIndex', [AdminAuthController::class, 'index'])->name('admin.user.index');
+
+});
 
 //ADMIN USER  LOGIN FORM
 
@@ -66,20 +67,23 @@ Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 /*------------------------------CUSTOMER ------------------------------*/
 
 //CUSTOMER USER  LOGIN
-Route::get('CustomerLoginForm',[CustomerAuthController::class,'showForm'])->name('customer.login');
+Route::get('CustomerLoginForm', [CustomerAuthController::class, 'showForm'])->name('customer.login');
 
 //VALIDATE THE CUSTOMER USER DETAILS
 Route::post('/login', [CustomerAuthController::class, 'login'])->name('customer.validation');
 
-//CUSTOMER - SHOW THR PRODUCTS
-Route::get('/', [CustomerProductController::class, 'index'])->name('customer.product.list');
+Route::middleware('customer.auth')->group(function () {
 
-// ADD TO CART
-Route::post('/addToCart/{bookId}', [CustomerCartController::class, 'addToCart'])->name('addToCart');
+    //CUSTOMER - SHOW THR PRODUCTS
+    Route::get('/', [CustomerProductController::class, 'index'])->name('customer.product.list');
 
-//CHECKOUT
-Route::get('/checkout', [CustomerCartController::class, 'checkout'])->name('checkout');
+    // ADD TO CART
+    Route::post('/addToCart/{bookId}', [CustomerCartController::class, 'addToCart'])->name('addToCart');
 
-//PLACE ORDER
-Route::post('/placeOrder', [CustomerCartController::class, 'placeOrder'])->name('placeOrder');
+    //CHECKOUT
+    Route::get('/checkout', [CustomerCartController::class, 'checkout'])->name('checkout');
 
+    //PLACE ORDER
+    Route::post('/placeOrder', [CustomerCartController::class, 'placeOrder'])->name('placeOrder');
+
+});
